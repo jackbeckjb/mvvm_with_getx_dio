@@ -6,21 +6,22 @@ import 'package:get/get.dart';
 import 'package:structure_mvvm/core/config/app_environment.dart';
 import 'package:structure_mvvm/core/config/environment.dart';
 import 'package:structure_mvvm/core/config/http_overrides.dart';
+import 'package:structure_mvvm/core/service_locator.dart';
 import 'package:structure_mvvm/res/localization/languages.dart';
 import 'package:structure_mvvm/res/routes/routes.dart';
 import 'package:structure_mvvm/res/routes/routes_name.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // 🔥 Choose your environment here
   Environment.init(AppEnvironment.local);
 
   // 2️⃣ Apply custom HTTP overrides (allows self-signed SSL only in dev/local)
-  HttpOverrides.global = MyHttpOverrides();
+  // HttpOverrides.global = MyHttpOverrides();
 
   // Initialize GetIt service locator
-  // await setupServiceLocator();
+  await setupServiceLocator();
   //  ApiClient().setTokens(access, refresh); // we need to place it at right place to save access token
   runApp(const MainApp());
 }

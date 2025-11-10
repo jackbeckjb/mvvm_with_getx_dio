@@ -11,17 +11,17 @@ class AppConfig {
     switch (environment) {
       case AppEnvironment.local:
         return AppConfig._(
-          baseUrl: "http://10.0.2.2:3000", // localhost for Android emulator
+          baseUrl: "https://reqres.in/api", // localhost for Android emulator
           envName: "LOCAL",
         );
       case AppEnvironment.staging:
         return AppConfig._(
-          baseUrl: "https://staging.yourapp.com/api",
+          baseUrl: "https://reqres.in/api",
           envName: "STAGING",
         );
       case AppEnvironment.production:
         return AppConfig._(
-          baseUrl: "https://api.yourapp.com",
+          baseUrl: "https://reqres.in/api",
           envName: "PRODUCTION",
         );
     }

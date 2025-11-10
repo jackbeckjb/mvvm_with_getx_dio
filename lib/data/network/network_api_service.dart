@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:structure_mvvm/data/exceptions/app_exceptions.dart';
 import 'package:structure_mvvm/data/network/api_client.dart';
 import 'package:structure_mvvm/data/network/base_api_service.dart';
+import 'package:structure_mvvm/res/log/app_logger.dart';
 import 'package:structure_mvvm/utils/utils.dart';
 
 class NetworkApiServices extends BaseApiServices {
@@ -67,12 +68,9 @@ class NetworkApiServices extends BaseApiServices {
         data: jsonEncode(data),
         queryParameters: queryParameters,
       );
-      String a = jsonEncode(response.data);
-      log(a);
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
-      // _handleException(e);
     } catch (e) {
       log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
@@ -95,12 +93,9 @@ class NetworkApiServices extends BaseApiServices {
 
         queryParameters: queryParameters,
       );
-      String a = jsonEncode(response.data);
-      log(a);
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
-      // _handleException(e);
     } catch (e) {
       log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
@@ -129,12 +124,9 @@ class NetworkApiServices extends BaseApiServices {
 
         queryParameters: queryParameters,
       );
-      String a = jsonEncode(response.data);
-      log(a);
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
-      // _handleException(e);
     } catch (e) {
       log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
@@ -156,8 +148,7 @@ class NetworkApiServices extends BaseApiServices {
         queryParameters: queryParameters,
         options: Options(method: 'POST', contentType: 'multipart'),
       );
-      String a = jsonEncode(response.data);
-      log(a);
+
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
@@ -176,14 +167,11 @@ class NetworkApiServices extends BaseApiServices {
     try {
       Response? response;
       response = await dio.get(endPoint, queryParameters: queryParameters);
-      String a = jsonEncode(response.data);
-      log(a);
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
-      // _handleException(e);
     } catch (e) {
-      log(e.toString());
+      AppLogger.error(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }

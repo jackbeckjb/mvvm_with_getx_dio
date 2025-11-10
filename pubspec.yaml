@@ -14,13 +14,17 @@ dependencies:
   flutter_screenutil: ^5.9.3
   fluttertoast: ^9.0.0
   get: ^4.7.2
+  get_it: ^9.0.5
   google_fonts: ^6.3.2
   intl: ^0.20.2
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  json_serializable: ^6.11.1
+  build_runner: ^2.10.1
 
 flutter:
   uses-material-design: true

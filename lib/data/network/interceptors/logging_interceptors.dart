@@ -7,7 +7,7 @@ class LoggingInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     AppLogger.info("➡️ ${options.method} ${options.uri}");
     AppLogger.info("Headers: ${options.headers}");
-    AppLogger.info("Data: ${options.data}");
+    // AppLogger.info("Data: ${options.data}");
     handler.next(options);
   }
 

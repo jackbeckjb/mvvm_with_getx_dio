@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:structure_mvvm/data/exceptions/app_exceptions.dart';
 import 'package:structure_mvvm/data/network/api_client.dart';
 import 'package:structure_mvvm/data/network/base_api_service.dart';
-import 'package:structure_mvvm/res/log/app_logger.dart';
 import 'package:structure_mvvm/utils/utils.dart';
 
 class NetworkApiServices extends BaseApiServices {
@@ -60,30 +58,32 @@ class NetworkApiServices extends BaseApiServices {
     String endPoint,
     Map<String, dynamic> data, {
     Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
   }) async {
     try {
       Response response;
       response = await dio.post(
         endPoint,
         data: jsonEncode(data),
+        cancelToken: cancelToken,
         queryParameters: queryParameters,
       );
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
 
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
 
-  ///
-  Future<Map<String, dynamic>> delete(
+  @override
+  Future<Map<String, dynamic>?> delete(
     String endPoint,
     Map<String, dynamic> data, {
     Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
   }) async {
     try {
       Response response;
@@ -97,7 +97,6 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
@@ -108,6 +107,7 @@ class NetworkApiServices extends BaseApiServices {
     String endPoint,
     Map<String, dynamic> data, {
     Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
   }) async {
     try {
       Response response;
@@ -128,7 +128,6 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
@@ -139,6 +138,7 @@ class NetworkApiServices extends BaseApiServices {
     String endPoint,
     Map<String, dynamic> data, {
     Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
   }) async {
     try {
       Response? response;
@@ -153,7 +153,6 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      log(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
@@ -163,6 +162,7 @@ class NetworkApiServices extends BaseApiServices {
   Future<Map<String, dynamic>?> get(
     String endPoint, {
     Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
   }) async {
     try {
       Response? response;
@@ -171,7 +171,6 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      AppLogger.error(e.toString());
       Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }

@@ -7,7 +7,10 @@ class UserRepo {
 
   Future<ApiResponse<List<User>>> fetchUsers() async {
     try {
-      final response = await apiService.get('/users');
+      final response = await apiService.get(
+        '/users',
+        queryParameters: {"page": 1},
+      );
 
       if (response == null) {
         return ApiResponse.error("No data found in response");

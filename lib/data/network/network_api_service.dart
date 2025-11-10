@@ -72,7 +72,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
+      Utils.errorMessage("Unexpected error: ${e.toString()}");
 
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
@@ -97,7 +97,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
+      Utils.errorMessage("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -128,7 +128,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
+      Utils.errorMessage("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -153,7 +153,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
+      Utils.errorMessage("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -171,7 +171,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.toastMessageBottom("Unexpected error: ${e.toString()}");
+      Utils.errorMessage("Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -180,11 +180,11 @@ class NetworkApiServices extends BaseApiServices {
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.sendTimeout ||
         e.type == DioExceptionType.receiveTimeout) {
-      Utils.toastMessageBottom("Request timed out. Please try again.");
+      Utils.errorMessage("Request timed out. Please try again.");
 
       throw RequestTimeOut("Request timed out. Please try again.");
     } else if (CancelToken.isCancel(e)) {
-      Utils.toastMessageBottom(
+      Utils.errorMessage(
         "Request Cancelled: The request was cancelled",
         // Get.context!,
         // isError: true,
@@ -192,7 +192,7 @@ class NetworkApiServices extends BaseApiServices {
       throw RequestCancelledException(e.toString());
     } else if (e.type == DioExceptionType.connectionError ||
         e.error is SocketException) {
-      Utils.toastMessageBottom(
+      Utils.errorMessage(
         "No internet connection or server unreachable.",
         // Get.context!,
         // isError: true,
@@ -202,7 +202,7 @@ class NetworkApiServices extends BaseApiServices {
       if ((e.response?.data ?? "").isNotEmpty) {
         return returnResponse(e.response!);
       } else {
-        Utils.toastMessageBottom(
+        Utils.errorMessage(
           "Failed to connect to the server.",
           // Get.context!,
           // isError: true,
@@ -211,7 +211,7 @@ class NetworkApiServices extends BaseApiServices {
         throw ServerException("Failed to connect to the server.");
       }
     } else {
-      Utils.toastMessageBottom(
+      Utils.errorMessage(
         "Unexpected error: ${e.toString()}",
         // Get.context!,
         // isError: true,

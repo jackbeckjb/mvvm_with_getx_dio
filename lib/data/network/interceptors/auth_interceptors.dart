@@ -49,7 +49,7 @@ class AuthInterceptor extends QueuedInterceptorsWrapper {
         return true;
       }
     } catch (e) {
-      Utils.toastMessageBottom("Token refresh failed. Please login again.");
+      Utils.errorMessage("Token refresh failed. Please login again.");
       AppLogger.error("Token refresh failed: $e");
     }
     return false;

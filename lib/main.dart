@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:structure_mvvm/core/config/app_environment.dart';
 import 'package:structure_mvvm/core/config/environment.dart';
-import 'package:structure_mvvm/core/config/http_overrides.dart';
 import 'package:structure_mvvm/core/service_locator.dart';
 import 'package:structure_mvvm/res/localization/languages.dart';
 import 'package:structure_mvvm/res/routes/routes.dart';

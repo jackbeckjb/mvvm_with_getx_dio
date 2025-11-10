@@ -56,6 +56,11 @@ class AppColors {
   static const Color color17 = Color(0xFFC8D6D9);
   static const Color color18 = Color(0xFFEEAEC8);
 
+  static const Color error = Color(0xFFEF5350); // Red - Error
+  static const Color warning = Color(0xFFFFA726); // Orange - Warning
+  static const Color success = Color(0xFF66BB6A); // Green - Success
+  static const Color info = Color(0xFF42A5F5); // Blue - Info
+
   //List Of Tag Colors
   static List<Color> tags = [tagColor1, tagColor2, tagColor3];
   static const tagColor1 = Color(0xFFEC7377);

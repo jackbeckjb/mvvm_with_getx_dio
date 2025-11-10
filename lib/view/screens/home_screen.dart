@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:structure_mvvm/res/colors/app_colors.dart';
 import 'package:structure_mvvm/res/fonts/app_fonts.dart';
+import 'package:structure_mvvm/utils/utils.dart';
 import 'package:structure_mvvm/viewModels/controller/user_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,9 +25,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "User",
-            style: AppFonts.headingTextStyle.copyWith(color: AppColors.black),
+          title: GestureDetector(
+            onTap: () {
+              print("hhhh");
+              // Utils.errorMessage("Testing");
+              showAwesomeSnackbar(
+                context,
+                'Well done!',
+                'Your message has been sent successfully.',
+                AwesomeSnackbarType.warning,
+              );
+            },
+            child: Text(
+              "User",
+              style: AppFonts.headingTextStyle.copyWith(color: AppColors.black),
+            ),
           ),
         ),
         body: Center(

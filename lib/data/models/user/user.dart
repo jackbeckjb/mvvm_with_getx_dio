@@ -23,6 +23,7 @@ class User {
     required this.avatar,
     required this.email,
     required this.isOnline,
+
     this.walletAcount,
   });
 

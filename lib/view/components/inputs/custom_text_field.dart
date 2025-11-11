@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:structure_mvvm/core/enums/input_type_enum.dart';
 import 'package:structure_mvvm/res/fonts/app_fonts.dart';
 
 import '../../../res/colors/app_colors.dart';
-
-enum TextFieldType { normal, password, email, phone, search }
 
 class CustomTextField extends StatefulWidget {
   final String hintText;

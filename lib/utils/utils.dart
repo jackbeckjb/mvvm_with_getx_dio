@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:structure_mvvm/core/enums/snackbar_enum.dart';
 import 'package:structure_mvvm/utils/snackbar/custom_snackbar.dart';
 
 class Utils {

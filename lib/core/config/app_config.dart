@@ -1,4 +1,4 @@
-import 'package:structure_mvvm/core/config/app_environment.dart';
+import 'package:structure_mvvm/core/enums/app_environment_enum.dart';
 
 class AppConfig {
   final String baseUrl;

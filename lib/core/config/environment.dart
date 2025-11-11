@@ -1,5 +1,5 @@
 import 'package:structure_mvvm/core/config/app_config.dart';
-import 'package:structure_mvvm/core/config/app_environment.dart';
+import 'package:structure_mvvm/core/enums/app_environment_enum.dart';
 
 import '../../res/log/app_logger.dart';
 

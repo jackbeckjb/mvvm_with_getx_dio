@@ -1,11 +1,6 @@
-import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
-import 'package:cherry_toast/cherry_toast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-// --- ENUM FOR SNACKBAR TYPES ---
-enum AwesomeSnackbarType { success, error, warning, info }
+import 'package:structure_mvvm/core/enums/snackbar_enum.dart';
 
 // --- HELPER FUNCTION TO GET ICON AND COLOR BASED ON TYPE ---
 class AwesomeSnackbarData {

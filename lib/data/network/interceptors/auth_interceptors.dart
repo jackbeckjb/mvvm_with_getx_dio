@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' hide Response;
 import 'package:structure_mvvm/res/log/app_logger.dart';
 import 'package:structure_mvvm/utils/utils.dart';
 
@@ -49,7 +50,10 @@ class AuthInterceptor extends QueuedInterceptorsWrapper {
         return true;
       }
     } catch (e) {
-      Utils.errorMessage("Token refresh failed. Please login again.");
+      Utils.errorSnackBar(
+        Get.context!,
+        "Token refresh failed. Please login again.",
+      );
       AppLogger.error("Token refresh failed: $e");
     }
     return false;

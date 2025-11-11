@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' hide Response, MultipartFile, FormData;
 import 'package:structure_mvvm/data/exceptions/app_exceptions.dart';
 import 'package:structure_mvvm/data/network/api_client.dart';
 import 'package:structure_mvvm/data/network/base_api_service.dart';
@@ -72,7 +73,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.errorMessage("Unexpected error: ${e.toString()}");
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
 
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
@@ -97,7 +98,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.errorMessage("Unexpected error: ${e.toString()}");
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -128,7 +129,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.errorMessage("Unexpected error: ${e.toString()}");
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -153,7 +154,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.errorMessage("Unexpected error: ${e.toString()}");
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -171,7 +172,7 @@ class NetworkApiServices extends BaseApiServices {
     } on DioException catch (e) {
       return handleError(e);
     } catch (e) {
-      Utils.errorMessage("Unexpected error: ${e.toString()}");
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }
@@ -180,42 +181,32 @@ class NetworkApiServices extends BaseApiServices {
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.sendTimeout ||
         e.type == DioExceptionType.receiveTimeout) {
-      Utils.errorMessage("Request timed out. Please try again.");
+      Utils.errorSnackBar(Get.context!, "Request timed out. Please try again.");
 
       throw RequestTimeOut("Request timed out. Please try again.");
     } else if (CancelToken.isCancel(e)) {
-      Utils.errorMessage(
+      Utils.errorSnackBar(
+        Get.context!,
         "Request Cancelled: The request was cancelled",
-        // Get.context!,
-        // isError: true,
       );
       throw RequestCancelledException(e.toString());
     } else if (e.type == DioExceptionType.connectionError ||
         e.error is SocketException) {
-      Utils.errorMessage(
+      Utils.errorSnackBar(
+        Get.context!,
         "No internet connection or server unreachable.",
-        // Get.context!,
-        // isError: true,
       );
       throw InternetException("No internet connection or server unreachable.");
     } else if (e.type == DioExceptionType.badResponse) {
       if ((e.response?.data ?? "").isNotEmpty) {
         return returnResponse(e.response!);
       } else {
-        Utils.errorMessage(
-          "Failed to connect to the server.",
-          // Get.context!,
-          // isError: true,
-        );
+        Utils.errorSnackBar(Get.context!, "Failed to connect to the server.");
 
         throw ServerException("Failed to connect to the server.");
       }
     } else {
-      Utils.errorMessage(
-        "Unexpected error: ${e.toString()}",
-        // Get.context!,
-        // isError: true,
-      );
+      Utils.errorSnackBar(Get.context!, "Unexpected error: ${e.toString()}");
       throw UnknownException("Unexpected error: ${e.toString()}");
     }
   }

@@ -42,7 +42,7 @@ class User {
   // ================================================================
   //  Or RUN THIS COMMAND TO GENERATE fromJson/toJson:
   //  # One-time generation
-  //  flutter pub run build_runner build --delete-conflicting-outputs
+  //  dart run build_runner build --delete-conflicting-outputs
   // ================================================================
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

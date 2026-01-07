@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:structure_mvvm/core/service_locator.dart';
 import 'package:structure_mvvm/res/colors/app_colors.dart';
 import 'package:structure_mvvm/res/fonts/app_fonts.dart';
 import 'package:structure_mvvm/utils/utils.dart';
@@ -18,6 +19,16 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     widget.controller.loadUsers();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    if (getIt.isRegistered<UserController>()) {
+      getIt.resetLazySingleton<UserController>(
+        disposingFunction: (controller) => controller.dispose(),
+      );
+    }
+    super.dispose();
   }
 
   @override

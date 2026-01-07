@@ -10,7 +10,7 @@ class Languages extends Translations {
       'general_exception':
           "we're unable to process your request\nPlease ty again",
       'Retry': "Retry",
-      'Welcome': "WelCome\nBack",
+      'Welcome': "WellCome\nBack",
       'Login': "Login",
     },
     'ur_PK': {'email_hint': 'آیمیل'},

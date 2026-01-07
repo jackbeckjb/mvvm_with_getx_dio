@@ -4,12 +4,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide Response, MultipartFile, FormData;
 import 'package:structure_mvvm/data/exceptions/app_exceptions.dart';
-import 'package:structure_mvvm/data/network/api_client.dart';
 import 'package:structure_mvvm/data/network/base_api_service.dart';
 import 'package:structure_mvvm/utils/utils.dart';
 
 class NetworkApiServices extends BaseApiServices {
-  final Dio dio = ApiClient().client; // ✅ Singleton Dio
+  final Dio dio;
+  NetworkApiServices(this.dio);
 
   dynamic returnResponse(Response response) {
     switch (response.statusCode) {
@@ -91,7 +91,7 @@ class NetworkApiServices extends BaseApiServices {
       response = await dio.delete(
         endPoint,
         data: jsonEncode(data),
-
+        cancelToken: cancelToken,
         queryParameters: queryParameters,
       );
       return returnResponse(response);
@@ -122,7 +122,7 @@ class NetworkApiServices extends BaseApiServices {
       response = await dio.put(
         endPoint,
         data: body,
-
+        cancelToken: cancelToken,
         queryParameters: queryParameters,
       );
       return returnResponse(response);
@@ -147,6 +147,7 @@ class NetworkApiServices extends BaseApiServices {
         endPoint,
         data: FormData.fromMap(data),
         queryParameters: queryParameters,
+        cancelToken: cancelToken,
         options: Options(method: 'POST', contentType: 'multipart'),
       );
 
@@ -167,7 +168,11 @@ class NetworkApiServices extends BaseApiServices {
   }) async {
     try {
       Response? response;
-      response = await dio.get(endPoint, queryParameters: queryParameters);
+      response = await dio.get(
+        endPoint,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
+      );
       return returnResponse(response);
     } on DioException catch (e) {
       return handleError(e);

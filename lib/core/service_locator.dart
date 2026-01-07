@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:structure_mvvm/data/network/api_client.dart';
 import 'package:structure_mvvm/data/network/network_api_service.dart';
 import 'package:structure_mvvm/data/repository/user/user_repo.dart';
+import 'package:structure_mvvm/viewModels/controller/theme_controller.dart';
 import 'package:structure_mvvm/viewModels/controller/user_controller.dart';
 import 'package:structure_mvvm/viewModels/service/splash_service.dart';
 
@@ -21,6 +22,7 @@ Future<void> setupServiceLocator() async {
 
   // Controllers
   getIt.registerLazySingleton<UserController>(() => UserController(getIt()));
+  getIt.registerLazySingleton<ThemeController>(() => ThemeController());
   // getIt.registerLazySingleton<SignUpController>(() => SignUpController());
 
   // Add other services here as needed

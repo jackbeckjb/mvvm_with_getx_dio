@@ -77,41 +77,41 @@ class CustomDropdown<T> extends StatelessWidget {
         isExpanded: true,
         decoration: InputDecoration(
           filled: true,
-          fillColor: fillColor ?? AppColors.intputBgColor,
+          fillColor: fillColor ?? AppColors.inputBgColor,
 
           border: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           disabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: borderColor ?? AppColors.intputBgColor,
+              color: borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),

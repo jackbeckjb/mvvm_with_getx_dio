@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:structure_mvvm/core/service_locator.dart';
 import 'package:structure_mvvm/res/colors/app_colors.dart';
+import 'package:structure_mvvm/res/extensions/themex_extension.dart';
 import 'package:structure_mvvm/res/fonts/app_fonts.dart';
 import 'package:structure_mvvm/utils/utils.dart';
+import 'package:structure_mvvm/viewModels/controller/theme_controller.dart';
 import 'package:structure_mvvm/viewModels/controller/user_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   final UserController controller;
-  const HomeScreen({super.key, required this.controller});
+  final ThemeController themeController;
+  const HomeScreen({
+    super.key,
+    required this.controller,
+    required this.themeController,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -46,9 +53,27 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Text(
               "User",
-              style: AppFonts.headingTextStyle.copyWith(color: AppColors.black),
+              style: AppFonts.headingTextStyle.copyWith(
+                color: context.adaptiveColor.black,
+              ),
             ),
           ),
+
+          actions: [
+            IconButton(
+              onPressed: () {
+                widget.themeController.toggleTheme();
+              },
+              icon: Obx(
+                () => Icon(
+                  color: context.adaptiveColor.black,
+                  widget.themeController.isLightMode.value
+                      ? Icons.light_mode
+                      : Icons.dark_mode,
+                ),
+              ),
+            ),
+          ],
         ),
         body: Center(
           child: Obx(() {
@@ -70,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text(user.displayName),
                   subtitle: Text(user.email),
                   trailing: user.isPremiumUser
-                      ? Icon(Icons.verified)
+                      ? Icon(Icons.verified, color: context.adaptiveColor.black)
                       : SizedBox.shrink(),
                 );
               },

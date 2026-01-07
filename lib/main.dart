@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:structure_mvvm/core/enums/app_environment_enum.dart';
 import 'package:structure_mvvm/core/config/environment.dart';
+import 'package:structure_mvvm/core/enums/app_environment_enum.dart';
 import 'package:structure_mvvm/core/service_locator.dart';
 import 'package:structure_mvvm/res/localization/languages.dart';
 import 'package:structure_mvvm/res/routes/routes.dart';
 import 'package:structure_mvvm/res/routes/routes_name.dart';
+import 'core/config/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,14 +35,14 @@ class MainApp extends StatelessWidget {
       splitScreenMode: false,
       useInheritedMediaQuery: true,
       child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         translations: Languages(),
         fallbackLocale: const Locale('en', 'US'),
         locale: const Locale('en', 'US'),
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
+        themeMode: ThemeMode.light,
         initialRoute: RoutesName.splashScreen,
         getPages: AppRoutes.appRoutes(),
       ),

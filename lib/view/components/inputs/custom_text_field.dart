@@ -127,43 +127,43 @@ class _CustomTextFieldState extends State<CustomTextField> {
         decoration: InputDecoration(
           filled: true,
 
-          fillColor: widget.backgroundColor ?? AppColors.intputBgColor,
+          fillColor: widget.backgroundColor ?? AppColors.inputBgColor,
           hintText: widget.hintText,
           hintStyle: AppFonts.inputLableTestStyle,
 
           border: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           disabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.borderColor ?? AppColors.intputBgColor,
+              color: widget.borderColor ?? AppColors.inputBgColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),

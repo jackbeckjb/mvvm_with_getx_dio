@@ -16,7 +16,7 @@ class AppRoutes {
     ),
     GetPage(
       name: RoutesName.homeView,
-      page: () => HomeScreen(controller: getIt()),
+      page: () => HomeScreen(controller: getIt(), themeController: getIt()),
       transition: Transition.fade,
       transitionDuration: const Duration(microseconds: 250),
     ),

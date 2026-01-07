@@ -100,7 +100,7 @@ class _StateCitySelectorState extends State<StateCitySelector> {
         onChanged: onChanged,
         itemBuilder: (item) => item,
         isLoading: isLoading,
-        fillColor: widget.fillColor ?? AppColors.intputBgColor2,
+        fillColor: widget.fillColor ?? AppColors.inputBgColor2,
         borderColor: Colors.transparent,
 
         boxShadow: false,

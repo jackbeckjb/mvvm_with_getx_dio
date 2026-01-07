@@ -443,7 +443,7 @@ Your UI stays clean, stable, and predictable.
 
 Here is the diagram of How the Canonical Data Model Works:
 
-!(assets/canonical-data-model-1.png)
+![](../assets/canonical-data-model-1.png)
 
 let's understand with real world example
 
@@ -547,4 +547,4 @@ It’s like a universal translator in sci-fi movies: each alien only needs to tr
 
 Here is the diagram of the Canonical Data Model:
 
-![Canonical Data Model](assets/canonical_model.png)
+![Canonical Data Model](../assets/canonical_model.png)

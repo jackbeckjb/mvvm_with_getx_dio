@@ -437,3 +437,114 @@ String get displayName => '$firstName $lastName';
 DTOs change.
 Mappers adapt.
 Your UI stays clean, stable, and predictable.
+
+
+## EXAMPLE
+
+Here is the diagram of How the Canonical Data Model Works:
+
+!(assets/canonical-data-model-1.png)
+
+let's understand with real world example
+
+### Scenario: A Shopping Business with Multiple Systems
+
+Imagine a company has these systems:
+
+1 E-commerce Website – handles orders online.
+
+2 Warehouse System – manages stock and shipping.
+
+3 Accounting System – handles invoices and payments.
+
+4 CRM System – tracks customer details.
+
+Each system stores customer and order data differently:
+
+| System     | Customer Name           | Address Format                          | Order Info     |
+| ---------- | ----------------------- | --------------------------------------- | -------------- |
+| E-commerce | `firstName`, `lastName` | `street`, `city`, `zip`                 | `items[]`      |
+| Warehouse  | `fullName`              | `streetLine1`, `cityName`, `postalCode` | `products[]`   |
+| Accounting | `custName`              | `address`                               | `orderDetails` |
+| CRM        | `name`                  | `addr`                                  | `purchases`    |
+
+
+### Without a Canonical Model (Point-to-Point)
+
+* To share order data from E-commerce → Warehouse → Accounting → CRM, you would need individual mappings between each pair of systems.
+
+* Adding a new system means creating even more mappings.
+
+* This gets messy quickly.
+
+
+For example:
+
+* E-commerce → Warehouse mapping
+
+* E-commerce → Accounting mapping
+
+* E-commerce → CRM mapping
+
+* Warehouse → Accounting mapping
+  … and so on.
+
+If you have 5 systems, the number of mappings grows roughly as n(n-1)/2.
+
+### With a Canonical Data Model
+
+Instead, you create a Canonical Model, a standard format for all data.
+
+#### Example Canonical Model for Customer:
+
+```json
+{
+  "customerId": "123",
+  "fullName": "John Doe",
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "zip": "10001"
+  },
+  "orders": [
+    {
+      "orderId": "001",
+      "items": ["Shirt", "Shoes"],
+      "total": 120.0
+    }
+  ]
+}
+```
+
+* Each system only translates its data to/from this canonical model.
+
+* Now, E-commerce, Warehouse, Accounting, and CRM don’t need to talk to each other directly—they just use the common model.
+
+
+## Benefits in Real Life
+
+### 1 Adding a new system (e.g., a new Marketing Tool) is easy:
+
+     * Just map Marketing Tool data → Canonical Model → Other systems.
+
+     * No need to map it to every other system individually.
+
+### 2 Consistency:
+
+     * “John Doe” is always represented the same way in all systems.
+
+     * Addresses and orders follow a unified format.
+
+### 3 Simpler maintenance:
+
+     * If the way orders are represented changes, only update the mapping to/from the canonical model.
+
+     * Other systems stay untouched.
+
+### ✅ Analogy:
+It’s like a universal translator in sci-fi movies: each alien only needs to translate to the “universal language,” instead of learning every alien’s language.
+
+
+Here is the diagram of the Canonical Data Model:
+
+![Canonical Data Model](assets/canonical_model.png)

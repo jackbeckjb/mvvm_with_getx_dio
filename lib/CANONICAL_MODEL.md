@@ -489,7 +489,7 @@ For example:
 * Warehouse → Accounting mapping
   … and so on.
 
-If you have 5 systems, the number of mappings grows roughly as n(n-1)/2.
+If you have 5 systems, the number of mappings grows roughly.
 
 ### With a Canonical Data Model
 

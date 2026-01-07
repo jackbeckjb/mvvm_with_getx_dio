@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:structure_mvvm/core/service_locator.dart';
-import 'package:structure_mvvm/res/colors/app_colors.dart';
 import 'package:structure_mvvm/res/extensions/themex_extension.dart';
 import 'package:structure_mvvm/res/fonts/app_fonts.dart';
 import 'package:structure_mvvm/utils/utils.dart';

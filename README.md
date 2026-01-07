@@ -16,6 +16,7 @@ This project demonstrates a clean, scalable architecture for Flutter application
 - **Responsive UI**: Screen adaptation using flutter_screenutil
 - **Internationalization**: Multi-language support with GetX translations
 - **Custom Logging**: Centralized logging system for debugging
+- **Canonical Mapper**: universal translator: Canonical Model, a standard format for all data
 - **API Response Handling**: Standardized API response wrapper
 - **Repository Pattern**: Abstract data layer for better testability
 
@@ -28,7 +29,10 @@ lib/
 │   └── service_locator.dart  # Dependency injection setup
 ├── data/
 │   ├── exceptions/      # Custom exception classes
-│   ├── models/          # Data models with JSON serialization
+│   ├── domain/          # models
+│   |   ├── dtos/        # dtos with JSON seriallization
+│   |   ├── entities/    # canonical model
+│   |   └── mapper/      # canonical mapper 
 │   ├── network/         # API client, interceptors, base services
 │   └── repository/      # Repository implementations
 ├── res/

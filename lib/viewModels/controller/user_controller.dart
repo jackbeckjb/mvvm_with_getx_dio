@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:structure_mvvm/data/models/user/user.dart';
+import 'package:structure_mvvm/data/domain/entities/user/user.dart';
 import 'package:structure_mvvm/data/network/api_response.dart';
 import 'package:structure_mvvm/data/repository/user/user_repo.dart';
 

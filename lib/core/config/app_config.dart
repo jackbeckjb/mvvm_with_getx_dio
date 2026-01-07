@@ -11,17 +11,18 @@ class AppConfig {
     switch (environment) {
       case AppEnvironment.local:
         return AppConfig._(
-          baseUrl: "https://reqres.in/api", // localhost for Android emulator
+          baseUrl:
+              "https://mp2fa6e33a91ef2e9bac.free.beeceptor.com", // localhost for Android emulator
           envName: "LOCAL",
         );
       case AppEnvironment.staging:
         return AppConfig._(
-          baseUrl: "https://reqres.in/api",
+          baseUrl: "https://mp2fa6e33a91ef2e9bac.free.beeceptor.com",
           envName: "STAGING",
         );
       case AppEnvironment.production:
         return AppConfig._(
-          baseUrl: "https://reqres.in/api",
+          baseUrl: "https://mp2fa6e33a91ef2e9bac.free.beeceptor.com",
           envName: "PRODUCTION",
         );
     }

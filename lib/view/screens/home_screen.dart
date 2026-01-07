@@ -56,8 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 final user = widget.controller.users[index];
                 return ListTile(
                   leading: Image.network(user.avatar),
-                  title: Text(user.firstName),
+                  title: Text(user.displayName),
                   subtitle: Text(user.email),
+                  trailing: user.isPremiumUser
+                      ? Icon(Icons.verified)
+                      : SizedBox.shrink(),
                 );
               },
             );

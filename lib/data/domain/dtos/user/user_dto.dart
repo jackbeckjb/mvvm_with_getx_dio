@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'user.g.dart';
+part 'user_dto.g.dart';
 
 @JsonSerializable()
-class User {
+class UserDto {
   final int id;
   @JsonKey(name: 'first_name')
   final String firstName;
@@ -13,18 +13,17 @@ class User {
   final String avatar;
   @JsonKey(name: 'isActive', defaultValue: true)
   final bool isOnline;
-  @JsonKey(name: 'wallet_amount', defaultValue: 0.0)
-  final double? walletAcount;
+  @JsonKey(name: 'walletAmount', defaultValue: 0.0)
+  final double? walletAmount;
 
-  User({
+  UserDto({
     required this.id,
     required this.firstName,
     required this.lastName,
     required this.avatar,
     required this.email,
     required this.isOnline,
-
-    this.walletAcount,
+    this.walletAmount,
   });
 
   // This command runs the Dart build_runner to automatically generate code for
@@ -44,6 +43,7 @@ class User {
   //  # One-time generation
   //  dart run build_runner build --delete-conflicting-outputs
   // ================================================================
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  factory UserDto.fromJson(Map<String, dynamic> json) =>
+      _$UserDtoFromJson(json);
+  Map<String, dynamic> toJson() => _$UserDtoToJson(this);
 }
